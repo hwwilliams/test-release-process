@@ -12,5 +12,4 @@ jobs:
     environment: ${{ github.workflow }}
 
     steps:
-    - name: Checkout Branch
-      uses: actions/checkout@v3
+    - runs: echo "this is ${{ github.workflow }}"
