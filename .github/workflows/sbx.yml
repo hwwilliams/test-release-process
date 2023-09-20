@@ -31,6 +31,5 @@ jobs:
       uses: benc-uk/workflow-dispatch@v1
       with:
         token: ${{ secrets.GH_PAT }}
-        repo: hwwilliams/test-release-process
         ref: ${{ github.head_ref }}
         workflow: dev
