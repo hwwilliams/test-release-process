@@ -31,5 +31,7 @@ jobs:
     - name: Dispatch Dev Workflow
       uses: benc-uk/workflow-dispatch@v1
       with:
-        workflow: dev
         token: ${{ secrets.GH_PAT }}
+        repo: hwwilliams/test-release-process
+        ref: ${{ github.base_ref }}
+        workflow: dev
