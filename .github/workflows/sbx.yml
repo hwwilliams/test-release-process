@@ -4,7 +4,7 @@ concurrency: ${{ github.workflow }}
 
 on:
   pull_request:
-    branches: [main, Sprint_*]
+    branches: [main, sprint_*]
     paths-ignore:
     - '.gitignore'
     - '**/*.md'
@@ -12,9 +12,26 @@ on:
 
 jobs:
   job-1:
-    name:    Job 1
+    name: Job 1
     runs-on: ubuntu-latest
+    environment: ${{ github.workflow }}
 
     steps:
     - name: Checkout Branch
       uses: actions/checkout@v3
+
+  run-dev:
+    name: Start Dev Workflow
+    if: ${{ github.event_name == 'pull_request' && github.base_ref == 'main' && startsWith(github.head_ref, 'sprint_') && success() }}
+    needs: [job-1] # Add all workflow jobs to needs to alert on failure.
+    runs-on: ubuntu-latest
+    environment: ${{ github.workflow }}
+
+    steps:
+    - name: Dispatch Dev Workflow
+      uses: benc-uk/workflow-dispatch@v1
+      with:
+        token: ${{ secrets.GH_PAT }}
+        repo: hwwilliams/test-release-process
+        ref: ${{ github.head_ref }}
+        workflow: dev
