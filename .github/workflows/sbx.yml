@@ -32,4 +32,4 @@ jobs:
       with:
         token: ${{ secrets.GH_PAT }}
         ref: ${{ github.head_ref }}
-        workflow: dev
+        workflow: dev.yml
