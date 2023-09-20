@@ -32,4 +32,4 @@ jobs:
       uses: benc-uk/workflow-dispatch@v1
       with:
         workflow: dev
-        token: ${{ secret.GH_PAT }}
+        token: ${{ secrets.GH_PAT }}
