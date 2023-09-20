@@ -19,17 +19,17 @@ jobs:
     steps:
     - run: echo "this is ${{ github.workflow }}"
 
-  run-dev:
-    name: Start Dev Workflow
-    if: ${{ github.event_name == 'pull_request' && github.base_ref == 'main' && startsWith(github.head_ref, 'sprint_') && success() }}
-    needs: [job-1] # Add all workflow jobs to needs to alert on failure.
-    runs-on: ubuntu-latest
-    environment: ${{ github.workflow }}
+  # run-dev:
+  #   name: Start Dev Workflow
+  #   if: ${{ github.event_name == 'pull_request' && github.base_ref == 'main' && startsWith(github.head_ref, 'sprint_') && success() }}
+  #   needs: [job-1] # Add all workflow jobs to needs to alert on failure.
+  #   runs-on: ubuntu-latest
+  #   environment: ${{ github.workflow }}
 
-    steps:
-    - name: Dispatch Dev Workflow
-      uses: benc-uk/workflow-dispatch@v1
-      with:
-        token: ${{ secrets.GH_PAT }}
-        ref: ${{ github.head_ref }}
-        workflow: dev.yml
+  #   steps:
+  #   - name: Dispatch Dev Workflow
+  #     uses: benc-uk/workflow-dispatch@v1
+  #     with:
+  #       token: ${{ secrets.GH_PAT }}
+  #       ref: ${{ github.head_ref }}
+  #       workflow: dev.yml
