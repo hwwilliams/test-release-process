@@ -32,3 +32,5 @@ jobs:
     steps:
     - name: Dispatch Dev Workflow
       uses: benc-uk/workflow-dispatch@v1
+      with:
+        workflow: dev
