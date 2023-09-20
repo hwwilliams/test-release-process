@@ -22,7 +22,7 @@ jobs:
 
     - run: echo "should be main ${{ github.base_ref }}"
 
-    - run: echo ${{ github }}
+    - run: echo "should be sprint_1 ${{ github.ref_name }}"
 
   # run-dev:
   #   name: Start Dev Workflow
