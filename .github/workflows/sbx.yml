@@ -19,3 +19,13 @@ jobs:
     steps:
     - name: Checkout Branch
       uses: actions/checkout@v3
+
+  run-dev:
+    if: ${{ github.event_name == 'pull_request' && contains(fromJSON('["refs/heads/main", "refs/heads/sprint_1"]'), github.ref) && success() }}
+    needs: [job-1] # Add all workflow jobs to needs to alert on failure.
+    runs-on: ubuntu-latest
+    environment: ${{ github.workflow }}
+
+    steps:
+    - name: Start Dev Workflow
+      uses: benc-uk/workflow-dispatch@v1
