@@ -1,0 +1,16 @@
+name: dev
+
+concurrency: ${{ github.workflow }}
+
+on:
+  workflow_dispatch:
+
+jobs:
+  job-1:
+    name:    Job 1
+    runs-on: ubuntu-latest
+    environment: ${{ github.workflow }}
+
+    steps:
+    - name: Checkout Branch
+      uses: actions/checkout@v3
