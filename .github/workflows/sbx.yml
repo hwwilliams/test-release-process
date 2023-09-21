@@ -18,7 +18,6 @@ jobs:
 
     steps:
     - run: echo "this is ${{ github.workflow }}"
-    - run: echo "this is ${{ github.workflow }}"
 
   # run-dev:
   #   name: Start Dev Workflow
